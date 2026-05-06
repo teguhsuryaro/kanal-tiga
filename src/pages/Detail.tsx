@@ -36,12 +36,12 @@ export default function Detail() {
   const waLink = `https://wa.me/6283150964050?text=${encodeURIComponent(waMessage)}`;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-4 md:py-12 pb-24 md:pb-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-24 md:py-16">
       <Link to="/" className="inline-flex items-center text-orange-600 dark:text-orange-400 mb-4 md:mb-8 hover:underline italic text-xs md:text-base">
         &larr; Kembali ke katalog
       </Link>
       
-      <div className="grid lg:grid-cols-2 gap-5 lg:gap-12">
+      <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
         <div className="rounded-xl md:rounded-3xl overflow-hidden shadow-md md:shadow-2xl bg-slate-200 dark:bg-slate-800">
           <img src={product.image} alt={product.name} className="w-full aspect-square object-cover" />
         </div>
