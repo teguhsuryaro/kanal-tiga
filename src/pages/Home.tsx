@@ -99,7 +99,7 @@ export default function Home() {
             </p>
             <div className="hero-actions">
               <a href="#products" className="btn btn-primary">
-                <MessageCircleIcon />
+                <RadioIcon />
                 Lihat Paket Sewa
               </a>
               <a href="#terms" className="btn btn-secondary">
@@ -121,10 +121,6 @@ export default function Home() {
                 <span>Area pickup utama</span>
               </div>
             </div>
-          </div>
-
-          <div className="hero-media">
-            <ProductVisual variant="earphone" />
           </div>
         </div>
       </section>
@@ -186,7 +182,7 @@ export default function Home() {
                 </div>
 
                 <Link to={`/detail/${product.id}`} className="btn btn-secondary">
-                  <MessageCircleIcon />
+                  <FileTextIcon />
                   Lihat Detail & Sewa
                 </Link>
               </article>

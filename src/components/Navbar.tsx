@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import {
   CloseIcon,
   MenuIcon,
-  MessageCircleIcon,
   MoonIcon,
   RadioIcon,
   SunIcon,
@@ -70,7 +69,7 @@ export default function Navbar() {
             {isDark ? <SunIcon /> : <MoonIcon />}
           </button>
           <a href="/#products" className="btn btn-primary navbar-cta">
-            <MessageCircleIcon />
+            <RadioIcon />
             <span>Sewa Sekarang</span>
           </a>
           <button
@@ -103,7 +102,7 @@ export default function Navbar() {
               className="btn btn-primary mobile-menu-cta"
               onClick={() => setMenuOpen(false)}
             >
-              <MessageCircleIcon />
+              <RadioIcon />
               <span>Sewa Sekarang</span>
             </a>
           </div>
