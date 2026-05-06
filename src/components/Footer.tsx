@@ -1,16 +1,60 @@
+import { ClockIcon, MapPinIcon, MessageCircleIcon, RadioIcon, UsersIcon } from './Icons';
+
 export default function Footer() {
   return (
-    <footer className="bg-slate-100 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 py-8 md:py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h3 className="text-lg md:text-xl font-bold text-orange-600 dark:text-orange-400 mb-2 md:mb-4">Kanal Tiga</h3>
-        <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm max-w-md mx-auto mb-4 md:mb-6 italic">
-          "Solusi komunikasi andalan untuk kelancaran setiap event Anda di sekitar Teknik UNSOED."
-        </p>
-        <div className="space-y-1 md:space-y-2 text-xs md:text-sm text-slate-500 dark:text-slate-500">
-          <p>📍 Jl. Mayjen Sungkono, Blater, Purbalingga (Dekat FT UNSOED)</p>
-          <p>⏰ Operasional: Setiap Hari (07.00 - 22.00 WIB)</p>
+    <footer className="footer">
+      <div className="kt-container">
+        <div className="footer-grid">
+          <div>
+            <h3>Kanal Tiga</h3>
+            <p>
+              Rental HT dekat FT UNSOED Purbalingga untuk event kampus, PKKMB,
+              camping, dan koordinasi lapangan.
+            </p>
+          </div>
+
+          <div>
+            <h4>Area Layanan</h4>
+            <div className="footer-list">
+              <div className="footer-item">
+                <MapPinIcon />
+                <p>Blater, Kalimanah, sekitar FT UNSOED Purbalingga.</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4>Operasional</h4>
+            <div className="footer-list">
+              <div className="footer-item">
+                <ClockIcon />
+                <p>Setiap hari, 07.00-22.00 WIB.</p>
+              </div>
+              <div className="footer-item">
+                <RadioIcon />
+                <p>Unit dicek sebelum digunakan.</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4>Kontak</h4>
+            <div className="footer-list">
+              <div className="footer-item">
+                <MessageCircleIcon />
+                <a href="https://wa.me/6283150964050" target="_blank" rel="noopener noreferrer">
+                  WhatsApp Kanal Tiga
+                </a>
+              </div>
+              <div className="footer-item">
+                <UsersIcon />
+                <p>@kanaltiga.ht</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="mt-6 md:mt-8 pt-6 md:pt-8 border-t border-slate-200 dark:border-slate-800 text-[10px] md:text-xs">
+
+        <div className="footer-bottom">
           &copy; {new Date().getFullYear()} Kanal Tiga HT Rental. All rights reserved.
         </div>
       </div>

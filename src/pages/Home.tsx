@@ -1,4 +1,19 @@
 import { Link } from 'react-router-dom';
+import {
+  BadgePercentIcon,
+  CalendarIcon,
+  CheckCircleIcon,
+  ExternalLinkIcon,
+  FileTextIcon,
+  HeadphonesIcon,
+  MapPinIcon,
+  MessageCircleIcon,
+  RadioIcon,
+  ShieldCheckIcon,
+  TagIcon,
+  TruckIcon,
+} from '../components/Icons';
+import ProductVisual from '../components/ProductVisual';
 
 const products = [
   {
@@ -6,124 +21,261 @@ const products = [
     name: 'HT Reguler',
     generalPrice: '15.000',
     studentPrice: '10.000',
-    desc: 'Andalan komunikasi lapangan yang kokoh dan jernih.',
-    image: 'https://placehold.co/400x400/ea580c/white?text=HT+Reguler'
+    desc: 'Unit HT siap pakai untuk panitia event, PKKMB, camping, dan koordinasi lapangan.',
+    badge: 'Favorit Mahasiswa',
+    variant: 'regular' as const,
   },
   {
     id: 'ht-earphone',
     name: 'HT + Earphone',
     generalPrice: '20.000',
     studentPrice: '15.000',
-    desc: 'Komunikasi lebih privasi dan profesional dengan handsfree.',
-    image: 'https://placehold.co/400x400/9a3412/white?text=HT+Handsfree'
-  }
+    desc: 'Paket handsfree untuk komunikasi yang lebih rapi, fokus, dan nyaman di area ramai.',
+    badge: 'Untuk Panitia Lapangan',
+    variant: 'earphone' as const,
+  },
 ];
 
-const faqs = [
-  { q: "Berapa lama minimal penyewaan?", a: "Penyewaan alat minimal dilakukan untuk jangka waktu 2 hari." },
-  { q: "Apa saja syarat jaminannya?", a: "Wajib meninggalkan KTM fisik bagi mahasiswa, atau KTP/SIM asli bagi kategori umum." },
-  { q: "Bagaimana sistem pembayarannya?", a: "Wajib melakukan DP (Down Payment) minimal 50% untuk mengamankan jadwal sewa." },
-  { q: "Bagaimana jika alat rusak atau hilang?", a: "Penyewa wajib bertanggung jawab penuh dan mengganti alat sesuai dengan harga unit baru." }
+const benefits = [
+  {
+    title: 'Dekat FT UNSOED',
+    desc: 'Pickup mudah dari area Blater, Kalimanah, dekat Fakultas Teknik UNSOED Purbalingga.',
+    icon: MapPinIcon,
+  },
+  {
+    title: 'Booking via WhatsApp',
+    desc: 'Pilih paket, isi kebutuhan, lalu kirim pesan otomatis untuk cek ketersediaan unit.',
+    icon: MessageCircleIcon,
+  },
+  {
+    title: 'Unit Dicek Rutin',
+    desc: 'HT disiapkan dan dicek sebelum digunakan agar koordinasi tim tetap lancar.',
+    icon: ShieldCheckIcon,
+  },
+  {
+    title: 'Harga Mahasiswa',
+    desc: 'Tarif khusus untuk mahasiswa FT UNSOED dengan KTM sesuai ketentuan.',
+    icon: TagIcon,
+  },
+];
+
+const terms = [
+  {
+    q: 'Minimal sewa 2 hari',
+    a: 'Durasi penyewaan dihitung minimal dua hari agar jadwal dan unit bisa disiapkan dengan jelas.',
+  },
+  {
+    q: 'DP minimal 50%',
+    a: 'Pembayaran uang muka diperlukan untuk mengamankan jadwal sewa dan jumlah unit.',
+  },
+  {
+    q: 'Jaminan identitas',
+    a: 'Mahasiswa mengirim foto KTM dan menunjukkan KTM fisik saat ambil unit. Umum dapat memakai KTP atau SIM.',
+  },
+  {
+    q: 'Tanggung jawab unit',
+    a: 'Kerusakan atau kehilangan selama masa sewa menjadi tanggung jawab penyewa.',
+  },
 ];
 
 export default function Home() {
   return (
-    <main className="flex-grow">
-      {/* Hero Section */}
-      <section className="relative py-12 md:py-24 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-7xl font-black text-slate-900 dark:text-white leading-tight tracking-tighter mb-3 md:mb-6">
-            Komunikasi Lancar,<br /> <span className="text-orange-600 dark:text-orange-400">Event Sukses.</span>
-          </h1>
-          <p className="text-sm sm:text-base md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-8 md:mb-10">
-            Penyediaan sewa HT terpercaya tepat di jantung area Fakultas Teknik UNSOED Purbalingga. Harga hemat, kualitas prima.
-          </p>
-          <a href="#products" className="btn-primary text-sm md:text-base px-5 py-2.5 md:px-6 md:py-3">Lihat Katalog Produk</a>
+    <main>
+      <section className="hero-section">
+        <div className="kt-container hero-grid">
+          <div className="hero-content">
+            <div className="section-kicker">
+              <RadioIcon />
+              Rental HT dekat FT UNSOED Purbalingga
+            </div>
+            <h1 className="hero-title">
+              Komunikasi Lancar, <span>Event Sukses.</span>
+            </h1>
+            <p className="hero-subtitle">
+              Kanal Tiga menyediakan sewa HT yang reliabel untuk event kampus,
+              kepanitiaan, PKKMB, camping, dan kebutuhan koordinasi lapangan di
+              sekitar Blater, Kalimanah.
+            </p>
+            <div className="hero-actions">
+              <a href="#products" className="btn btn-primary">
+                <MessageCircleIcon />
+                Lihat Paket Sewa
+              </a>
+              <a href="#terms" className="btn btn-secondary">
+                <FileTextIcon />
+                Syarat Sewa
+              </a>
+            </div>
+            <div className="hero-stats" aria-label="Ringkasan layanan Kanal Tiga">
+              <div className="hero-stat">
+                <strong>07.00-22.00</strong>
+                <span>Jam operasional</span>
+              </div>
+              <div className="hero-stat">
+                <strong>2 Paket</strong>
+                <span>HT reguler dan earphone</span>
+              </div>
+              <div className="hero-stat">
+                <strong>FT UNSOED</strong>
+                <span>Area pickup terdekat</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="hero-media">
+            <ProductVisual variant="earphone" />
+          </div>
         </div>
       </section>
 
-      {/* Products Section */}
-      <section id="products" className="py-12 md:py-20 bg-slate-100/50 dark:bg-slate-800/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 md:mb-12">
-            <h2 className="section-title">Pilihan Paket Sewa</h2>
-            <p className="text-slate-500 text-sm md:text-base">Pilih unit yang sesuai dengan kebutuhan koordinasi tim Anda.</p>
+      <section id="products" className="kt-section kt-section--soft">
+        <div className="kt-container">
+          <div className="section-kicker">
+            <CalendarIcon />
+            Paket sewa harian
           </div>
-          <div className="mb-8 md:mb-12 bg-orange-50 dark:bg-orange-900/30 border-2 border-orange-200 dark:border-orange-800/50 rounded-xl md:rounded-2xl p-4 md:p-6 text-center shadow-sm">
-            <p className="text-xs md:text-base text-orange-800 dark:text-orange-200 font-medium leading-relaxed">
-              🎓 <strong className="font-black text-orange-600 dark:text-orange-400">Promo Spesial Mahasiswa!</strong> Dapatkan potongan harga diskon sebesar <strong className="font-black">Rp5.000 per unit HT</strong> untuk Anda yang berstatus mahasiswa.
-            </p>
+          <h2 className="section-heading">Pilih HT sesuai cara kerja tim Anda.</h2>
+          <p className="section-copy">
+            Dua pilihan paket sederhana dengan harga transparan untuk mahasiswa
+            dan pengguna umum.
+          </p>
+
+          <div className="promo-banner">
+            <span className="icon-chip">
+              <BadgePercentIcon />
+            </span>
+            <div>
+              <h3>Promo Mahasiswa FT UNSOED</h3>
+              <p>
+                Tunjukkan KTM dan dapatkan harga khusus mulai dari
+                Rp10.000/unit/hari.
+              </p>
+            </div>
           </div>
-          <div className="grid sm:grid-cols-2 gap-6 md:gap-8">
+
+          <div className="product-grid">
             {products.map((product) => (
-              <div key={product.id} className="card group">
-                <img src={product.image} alt={product.name} className="w-full aspect-[4/3] md:aspect-video object-cover rounded-lg md:rounded-xl mb-3 md:mb-6 group-hover:scale-105 transition-transform" />
-                <h3 className="text-lg md:text-2xl font-bold mb-1 md:mb-2">{product.name}</h3>
-                <p className="text-slate-500 text-xs md:text-sm mb-3 md:mb-4">{product.desc}</p>
-                <div className="flex justify-between items-end mb-4 md:mb-6">
-                  <div>
-                    <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wider">Mahasiswa</p>
-                    <p className="text-base md:text-xl font-bold text-orange-600 dark:text-orange-400">Rp{product.studentPrice}<span className="text-[10px] md:text-sm font-normal">/hari</span></p>
+              <article key={product.id} className="kt-card product-card">
+                <ProductVisual variant={product.variant} compact />
+
+                <div>
+                  <span className="product-card__badge">
+                    {product.variant === 'earphone' ? <HeadphonesIcon /> : <RadioIcon />}
+                    {product.badge}
+                  </span>
+                  <h3>{product.name}</h3>
+                  <p>{product.desc}</p>
+                </div>
+
+                <div className="price-row">
+                  <div className="price-box price-box--highlight">
+                    <span className="price-label">Mahasiswa</span>
+                    <span className="price-value">
+                      Rp{product.studentPrice}
+                      <small>/hari</small>
+                    </span>
                   </div>
-                  <div className="text-right">
-                    <p className="text-[10px] md:text-xs text-slate-400 uppercase tracking-wider">Umum</p>
-                    <p className="text-sm md:text-lg font-semibold">Rp{product.generalPrice}</p>
+                  <div className="price-box">
+                    <span className="price-label">Umum</span>
+                    <span className="price-value">
+                      Rp{product.generalPrice}
+                      <small>/hari</small>
+                    </span>
                   </div>
                 </div>
-                <Link to={`/detail/${product.id}`} className="block text-center py-1.5 md:py-3 text-xs md:text-base border-2 border-orange-600 text-orange-600 dark:text-orange-400 dark:border-orange-400 rounded-lg font-bold hover:bg-orange-600 hover:text-white transition-all active:scale-95">
-                  Detail Spesifikasi
+
+                <Link to={`/detail/${product.id}`} className="btn btn-secondary">
+                  <MessageCircleIcon />
+                  Lihat Detail & Sewa
                 </Link>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-12 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
-            <div className="card text-center">
-              <div className="w-10 h-10 md:w-12 md:h-12 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-lg md:rounded-xl flex items-center justify-center mx-auto mb-3 font-bold text-lg md:text-xl">01</div>
-              <h3 className="text-base md:text-xl font-bold mb-1 md:mb-2">Syarat Praktis</h3>
-              <p className="text-slate-500 dark:text-slate-400 text-xs md:text-sm">Proses administrasi cepat hanya dengan jaminan identitas fisik.</p>
-            </div>
-            <div className="card text-center">
-              <div className="w-10 h-10 md:w-12 md:h-12 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-lg md:rounded-xl flex items-center justify-center mx-auto mb-3 font-bold text-lg md:text-xl">02</div>
-              <h3 className="text-base md:text-xl font-bold mb-1 md:mb-2">Unit Terawat</h3>
-              <p className="text-slate-500 dark:text-slate-400 text-xs md:text-sm">Semua unit HT kami melalui pengecekan rutin untuk performa maksimal.</p>
-            </div>
-            <div className="card text-center">
-              <div className="w-10 h-10 md:w-12 md:h-12 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-lg md:rounded-xl flex items-center justify-center mx-auto mb-3 font-bold text-lg md:text-xl">03</div>
-              <h3 className="text-base md:text-xl font-bold mb-1 md:mb-2">Harga Mahasiswa</h3>
-              <p className="text-slate-500 dark:text-slate-400 text-xs md:text-sm">Tarif sewa bersahabat khusus untuk kantong pejuang kampus.</p>
-            </div>
+      <section className="kt-section">
+        <div className="kt-container">
+          <div className="section-kicker">
+            <ShieldCheckIcon />
+            Kenapa Kanal Tiga
+          </div>
+          <h2 className="section-heading">Dibuat untuk koordinasi lapangan yang rapi.</h2>
+          <p className="section-copy">
+            Cocok untuk kepanitiaan kampus, event organizer, camping group, dan
+            tim kecil yang butuh komunikasi cepat tanpa ribet.
+          </p>
+
+          <div className="benefit-grid mt-10">
+            {benefits.map((benefit) => {
+              const Icon = benefit.icon;
+              return (
+                <article key={benefit.title} className="kt-card benefit-card">
+                  <span className="icon-chip">
+                    <Icon />
+                  </span>
+                  <h3>{benefit.title}</h3>
+                  <p>{benefit.desc}</p>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* FAQ / Terms Section */}
-      <section className="py-12 md:py-20 bg-slate-100/50 dark:bg-slate-800/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-10">Syarat & Ketentuan</h2>
-          <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
-            {faqs.map((faq, i) => (
-              <div key={i} className="card h-full">
-                <h4 className="font-bold text-sm md:text-base text-orange-600 dark:text-orange-400 mb-1 font-mono">Q: {faq.q}</h4>
-                <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm">A: {faq.a}</p>
-              </div>
+      <section id="terms" className="kt-section kt-section--soft">
+        <div className="kt-container">
+          <div className="section-kicker">
+            <FileTextIcon />
+            Syarat & Ketentuan
+          </div>
+          <h2 className="section-heading">Syarat sewa dibuat jelas sejak awal.</h2>
+          <p className="section-copy">
+            Ringkas, mudah dipahami, dan membantu kedua pihak menjaga unit tetap
+            aman selama masa sewa.
+          </p>
+
+          <div className="terms-grid">
+            {terms.map((term) => (
+              <article key={term.q} className="kt-card term-card">
+                <span className="icon-chip">
+                  <CheckCircleIcon />
+                </span>
+                <div>
+                  <h3>{term.q}</h3>
+                  <p>{term.a}</p>
+                </div>
+              </article>
             ))}
           </div>
-          <div className="mt-8 md:mt-10 text-center">
-            <a 
-              href="https://docs.google.com/document/d/1QKNRmoZvyIV6OnHzKGdSPtdzPgZkll7VhSPxohq-9tE/edit?usp=sharing" 
-              target="_blank" 
+
+          <div className="mt-10">
+            <a
+              href="https://docs.google.com/document/d/1QKNRmoZvyIV6OnHzKGdSPtdzPgZkll7VhSPxohq-9tE/edit?usp=sharing"
+              target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-4 md:px-6 py-2 md:py-3 text-xs md:text-base border-2 border-orange-600 text-orange-600 dark:text-orange-400 dark:border-orange-400 font-bold rounded-lg md:rounded-xl hover:bg-orange-600 hover:text-white transition-all active:scale-95 shadow-sm"
+              className="btn btn-secondary"
             >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+              <ExternalLinkIcon />
               Baca Syarat & Ketentuan Lengkap
             </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="kt-section">
+        <div className="kt-container">
+          <div className="kt-card term-card">
+            <span className="icon-chip">
+              <TruckIcon />
+            </span>
+            <div>
+              <h3>Pickup di Blater atau kirim sesuai jarak</h3>
+              <p>
+                Ambil unit di sekitar Blater/FT UNSOED tanpa biaya. Pengantaran
+                tersedia dengan ongkir menyesuaikan jarak dan lokasi event.
+              </p>
+            </div>
           </div>
         </div>
       </section>
