@@ -9,6 +9,8 @@ export type ProductVariant = 'regular' | 'earphone';
 export type ProductImage = {
   src: string;
   alt: string;
+  width: number;
+  height: number;
 };
 
 export type ProductImageSet = {
@@ -21,23 +23,33 @@ export const productImages: Record<ProductVariant, ProductImageSet> = {
     main: {
       src: frontImage,
       alt: 'HT Reguler Kanal Tiga tampak depan',
+      width: 700,
+      height: 700,
     },
     gallery: [
       {
         src: frontImage,
         alt: 'HT Reguler Kanal Tiga tampak depan',
+        width: 700,
+        height: 700,
       },
       {
         src: backImage,
         alt: 'Tampak belakang HT Kanal Tiga',
+        width: 800,
+        height: 800,
       },
       {
         src: batteryImage,
         alt: 'Baterai HT Kanal Tiga',
+        width: 800,
+        height: 800,
       },
       {
         src: regularAngleImage,
         alt: 'HT Reguler Kanal Tiga tampak samping dan depan',
+        width: 500,
+        height: 500,
       },
     ],
   },
@@ -45,23 +57,33 @@ export const productImages: Record<ProductVariant, ProductImageSet> = {
     main: {
       src: fullsetImage,
       alt: 'Paket HT dengan earphone Kanal Tiga',
+      width: 800,
+      height: 800,
     },
     gallery: [
       {
         src: fullsetImage,
         alt: 'HT Reguler Kanal Tiga fullset',
+        width: 800,
+        height: 800,
       },
       {
         src: frontImage,
         alt: 'HT Reguler Kanal Tiga tampak depan',
+        width: 700,
+        height: 700,
       },
       {
         src: backImage,
         alt: 'Tampak belakang HT Kanal Tiga',
+        width: 800,
+        height: 800,
       },
       {
         src: batteryImage,
         alt: 'Baterai HT Kanal Tiga',
+        width: 800,
+        height: 800,
       },
     ],
   },

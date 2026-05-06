@@ -56,11 +56,6 @@
   --kt-product-visual-bg:
     linear-gradient(135deg, rgba(45, 212, 191, 0.15), rgba(201, 164, 92, 0.06), rgba(26, 49, 77, 0.96)),
     var(--kt-card-soft);
-  --kt-radio-body:
-    linear-gradient(145deg, #314866, #19304a 58%, #101c2d),
-    var(--kt-card);
-  --kt-radio-antenna: linear-gradient(180deg, #d9e1ee, #53657f);
-  --kt-radio-line: rgba(212, 220, 235, 0.28);
   --kt-radio-wire: rgba(212, 220, 235, 0.38);
   --kt-footer-muted: rgba(168, 179, 199, 0.72);
   --kt-orange: var(--kt-primary);
@@ -134,11 +129,6 @@
   --kt-product-visual-bg:
     linear-gradient(135deg, rgba(15, 118, 110, 0.12), rgba(184, 137, 54, 0.07), rgba(248, 250, 252, 0.96)),
     #eef2f7;
-  --kt-radio-body:
-    linear-gradient(145deg, #334155, #1e293b 60%, #111827),
-    #172238;
-  --kt-radio-antenna: linear-gradient(180deg, #64748b, #1f2937);
-  --kt-radio-line: rgba(226, 232, 240, 0.3);
   --kt-radio-wire: rgba(100, 116, 139, 0.38);
   --kt-footer-muted: rgba(100, 116, 139, 0.82);
   --kt-orange: var(--kt-primary);
@@ -183,6 +173,11 @@ button {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--kt-primary);
+  outline-offset: 3px;
 }
 
 ::selection {
@@ -879,83 +874,6 @@ a {
     border-color: var(--kt-border);
   }
 
-  .radio-unit {
-    position: relative;
-    width: 134px;
-    height: 210px;
-    z-index: 1;
-    border: 1px solid var(--kt-border-strong);
-    border-radius: 22px;
-    background: var(--kt-radio-body);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.15),
-      0 26px 52px rgba(0, 0, 0, 0.28);
-  }
-
-  .radio-antenna {
-    position: absolute;
-    left: 26px;
-    top: -70px;
-    width: 7px;
-    height: 78px;
-    border-radius: 999px;
-    background: var(--kt-radio-antenna);
-    transform: rotate(-8deg);
-    transform-origin: bottom;
-  }
-
-  .radio-speaker {
-    position: absolute;
-    top: 26px;
-    left: 22px;
-    display: grid;
-    gap: 8px;
-    width: 90px;
-  }
-
-  .radio-speaker span {
-    height: 5px;
-    border-radius: 999px;
-    background: var(--kt-radio-line);
-  }
-
-  .radio-screen {
-    position: absolute;
-    left: 24px;
-    right: 24px;
-    bottom: 56px;
-    display: grid;
-    height: 44px;
-    place-items: center;
-    border: 1px solid var(--kt-green-soft);
-    border-radius: 10px;
-    background: var(--kt-green-soft);
-    color: #54f0b8;
-  }
-
-  .radio-screen-icon {
-    width: 24px;
-    height: 24px;
-  }
-
-  .radio-control {
-    position: absolute;
-    bottom: 22px;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: var(--kt-orange);
-    box-shadow: 0 0 0 7px var(--kt-orange-soft);
-  }
-
-  .radio-control--left {
-    left: 38px;
-  }
-
-  .radio-control--right {
-    right: 38px;
-  }
-
   .radio-badge,
   .earphone-unit {
     position: absolute;
@@ -970,7 +888,6 @@ a {
     border-radius: var(--radius-lg);
     background: var(--kt-orange-soft);
     color: var(--kt-orange-hover);
-    backdrop-filter: blur(12px);
   }
 
   .radio-badge-icon,
@@ -1798,12 +1715,16 @@ a {
     display: block;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 180ms ease;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 160ms ease;
   }
 
   .mobile-menu.is-open {
-    max-height: 420px;
+    max-height: none;
+    opacity: 1;
     padding-bottom: 12px;
+    pointer-events: auto;
   }
 
   .hero-section {
@@ -1931,6 +1852,10 @@ a {
   .cta-dock {
     margin-top: 24px;
   }
+
+  .navbar {
+    backdrop-filter: none;
+  }
 }
 
 @media (max-width: 560px) {
@@ -1941,5 +1866,28 @@ a {
 
   .hero-stats {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (hover: none) {
+  .btn:hover,
+  .product-card:hover,
+  .theme-toggle:hover,
+  .product-visual-thumb:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }

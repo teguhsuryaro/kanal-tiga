@@ -62,7 +62,6 @@ type Product = {
   student: string;
   general: string;
   variant: 'regular' | 'earphone';
-  desc: string;
   quickSpecs: Array<{
     label: string;
     value: string;
@@ -115,7 +114,6 @@ const productData: Record<string, Product> = {
     student: '10.000',
     general: '15.000',
     variant: 'regular',
-    desc: 'HT Reguler adalah unit handy talkie standar untuk kebutuhan komunikasi tim saat acara, kegiatan lapangan, atau aktivitas outdoor. Cocok digunakan ketika tim membutuhkan komunikasi cepat tanpa bergantung pada jaringan internet.',
     quickSpecs: [
       { label: 'Frekuensi', value: 'UHF', icon: RadioIcon },
       { label: 'Channel', value: '16 channel', icon: UsersIcon },
@@ -164,7 +162,6 @@ const productData: Record<string, Product> = {
     student: '15.000',
     general: '20.000',
     variant: 'earphone',
-    desc: 'HT + Earphone menggunakan unit HT yang sama seperti HT Reguler, dengan tambahan earphone khusus agar komunikasi lebih jelas dan nyaman di area ramai.',
     quickSpecs: [
       { label: 'Frekuensi', value: 'UHF', icon: RadioIcon },
       { label: 'Channel', value: '16 channel', icon: UsersIcon },
