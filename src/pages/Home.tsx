@@ -42,31 +42,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-8 md:py-16 bg-slate-100/50 dark:bg-slate-800/30">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-8">
-            <div className="card text-center">
-              <div className="w-10 h-10 md:w-12 md:h-12 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-lg md:rounded-xl flex items-center justify-center mx-auto mb-3 font-bold text-lg md:text-xl">01</div>
-              <h3 className="text-base md:text-xl font-bold mb-1 md:mb-2">Syarat Praktis</h3>
-              <p className="text-slate-500 dark:text-slate-400 text-xs md:text-sm">Proses administrasi cepat hanya dengan jaminan identitas fisik.</p>
-            </div>
-            <div className="card text-center">
-              <div className="w-10 h-10 md:w-12 md:h-12 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-lg md:rounded-xl flex items-center justify-center mx-auto mb-3 font-bold text-lg md:text-xl">02</div>
-              <h3 className="text-base md:text-xl font-bold mb-1 md:mb-2">Unit Terawat</h3>
-              <p className="text-slate-500 dark:text-slate-400 text-xs md:text-sm">Semua unit HT kami melalui pengecekan rutin untuk performa maksimal.</p>
-            </div>
-            <div className="card text-center">
-              <div className="w-10 h-10 md:w-12 md:h-12 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-lg md:rounded-xl flex items-center justify-center mx-auto mb-3 font-bold text-lg md:text-xl">03</div>
-              <h3 className="text-base md:text-xl font-bold mb-1 md:mb-2">Harga Mahasiswa</h3>
-              <p className="text-slate-500 dark:text-slate-400 text-xs md:text-sm">Tarif sewa bersahabat khusus untuk kantong pejuang kampus.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Products Section */}
-      <section id="products" className="py-8 md:py-20">
+      <section id="products" className="py-8 md:py-20 bg-slate-100/50 dark:bg-slate-800/30">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-6 md:mb-12">
             <h2 className="section-title">Pilihan Paket Sewa</h2>
@@ -98,6 +75,29 @@ export default function Home() {
                 </Link>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-8 md:py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-8">
+            <div className="card text-center">
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-lg md:rounded-xl flex items-center justify-center mx-auto mb-3 font-bold text-lg md:text-xl">01</div>
+              <h3 className="text-base md:text-xl font-bold mb-1 md:mb-2">Syarat Praktis</h3>
+              <p className="text-slate-500 dark:text-slate-400 text-xs md:text-sm">Proses administrasi cepat hanya dengan jaminan identitas fisik.</p>
+            </div>
+            <div className="card text-center">
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-lg md:rounded-xl flex items-center justify-center mx-auto mb-3 font-bold text-lg md:text-xl">02</div>
+              <h3 className="text-base md:text-xl font-bold mb-1 md:mb-2">Unit Terawat</h3>
+              <p className="text-slate-500 dark:text-slate-400 text-xs md:text-sm">Semua unit HT kami melalui pengecekan rutin untuk performa maksimal.</p>
+            </div>
+            <div className="card text-center">
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 rounded-lg md:rounded-xl flex items-center justify-center mx-auto mb-3 font-bold text-lg md:text-xl">03</div>
+              <h3 className="text-base md:text-xl font-bold mb-1 md:mb-2">Harga Mahasiswa</h3>
+              <p className="text-slate-500 dark:text-slate-400 text-xs md:text-sm">Tarif sewa bersahabat khusus untuk kantong pejuang kampus.</p>
+            </div>
           </div>
         </div>
       </section>
