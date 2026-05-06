@@ -442,7 +442,6 @@ export default function Detail() {
               Detail paket
             </div>
             <h1 className="detail-title">{product.name}</h1>
-            <p className="detail-subtitle">{product.desc}</p>
 
             <div className="form-section">
               <h2 className="form-section__title">
