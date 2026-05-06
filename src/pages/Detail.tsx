@@ -73,63 +73,41 @@ type Product = {
 
 type CustomerType = 'mahasiswa' | 'umum';
 type DeliveryOption = 'pickup' | 'del_1_3' | 'del_3_10' | 'del_10_plus';
-
-const baseQuickSpecs = [
-  { label: 'Frekuensi', value: 'UHF', icon: RadioIcon },
-  { label: 'Channel', value: '16 channel', icon: UsersIcon },
-  { label: 'Baterai', value: '2800 mAh', icon: BatteryIcon },
-  { label: 'Jangkauan', value: 'Hingga 10 km area terbuka', icon: SignalIcon },
-];
-
-const baseHighlights = [
-  { label: 'Frekuensi', value: 'UHF', icon: RadioIcon },
-  { label: 'Kapasitas', value: '16 channel', icon: UsersIcon },
-  { label: 'Baterai', value: '2800 mAh', icon: BatteryIcon },
-  { label: 'Daya Output', value: '±5W', icon: ZapIcon },
-  { label: 'Jangkauan', value: 'Hingga 10 km area terbuka', icon: SignalIcon },
-];
+type BookingField = 'unitCount' | 'useDate' | 'duration' | 'eventName' | 'eventLocation';
+type BookingFormValues = Record<BookingField, string> & {
+  notes: string;
+};
+type BookingErrors = Partial<Record<BookingField, string>>;
 
 const baseTechnicalSpecs = [
-  { label: 'Jenis Perangkat', value: 'Handy Talkie / Walkie Talkie' },
+  { label: 'Jenis perangkat', value: 'Handy Talkie / Walkie Talkie' },
   { label: 'Frekuensi', value: 'UHF' },
-  { label: 'Kapasitas Channel', value: '16 channel' },
-  { label: 'Channel Spacing', value: '25 KHz' },
-  { label: 'Tegangan Operasional', value: '3.7V' },
-  { label: 'Kapasitas Baterai', value: '2800 mAh' },
-  { label: 'Jenis Baterai', value: 'Lithium-ion' },
-  { label: 'Daya Tahan Baterai', value: 'Menyesuaikan durasi dan intensitas penggunaan' },
-  { label: 'Stabilitas Frekuensi', value: '2.5 ppm' },
-  { label: 'Suhu Operasional', value: '-30°C sampai +60°C' },
-  { label: 'Impedansi Antena', value: '50Ω' },
-  { label: 'Dimensi Unit', value: '± 60 × 33 × 115 mm tanpa antena' },
-  { label: 'Berat Unit', value: '± 198 gram dengan baterai dan antena' },
-  { label: 'Daya Output', value: '±5W' },
-  { label: 'Jangkauan Komunikasi', value: 'Hingga 10 km pada area terbuka tanpa hambatan' },
-  { label: 'Audio', value: 'Suara jernih untuk komunikasi lapangan' },
-  { label: 'Fitur Tambahan', value: 'Senter LED darurat' },
+  { label: 'Kapasitas channel', value: '16 channel' },
+  { label: 'Channel spacing', value: '25 KHz' },
+  { label: 'Tegangan operasional', value: '3.7V' },
+  { label: 'Kapasitas baterai', value: '2800 mAh' },
+  { label: 'Jenis baterai', value: 'Lithium-ion' },
+  { label: 'Daya tahan baterai', value: 'Menyesuaikan durasi dan intensitas penggunaan' },
+  { label: 'Stabilitas frekuensi', value: '2.5 ppm' },
+  { label: 'Suhu operasional', value: '-30°C sampai +60°C' },
+  { label: 'Impedansi antena', value: '50Ω' },
+  { label: 'Dimensi unit', value: '±60 × 33 × 115 mm tanpa antena' },
+  { label: 'Berat unit', value: '±198 gram dengan baterai dan antena' },
+  { label: 'Daya output', value: '±5W' },
+  { label: 'Audio', value: 'Jernih untuk komunikasi lapangan' },
+  { label: 'Fitur tambahan', value: 'Senter LED darurat' },
 ];
 
-const baseRangeNote = {
-  title: 'Catatan Jangkauan',
+const sharedRangeNote = {
+  title: 'Catatan jangkauan',
   summary:
-    'Jangkauan HT sangat dipengaruhi oleh kondisi medan dan hambatan di sekitar lokasi penggunaan.',
+    'Jangkauan HT dipengaruhi oleh kondisi medan, bangunan, pohon, kendaraan, dan hambatan lain di sekitar lokasi.',
   details: [
-    'Pada area terbuka tanpa hambatan, perangkat diklaim mampu menjangkau hingga 10 km.',
-    'Berdasarkan uji coba internal Kanal Tiga, komunikasi masih terdengar jelas pada jarak sekitar 2,5 km di area dengan banyak hambatan seperti bangunan, pohon, kendaraan, dan kondisi lingkungan sekitar.',
-    'Pada jarak di atas 3 km, suara mulai muncul noise, tetapi masih dapat terdengar tergantung kondisi lokasi.',
+    'Pada area terbuka tanpa hambatan, perangkat diklaim dapat menjangkau hingga 10 km.',
+    'Berdasarkan uji internal Kanal Tiga, komunikasi masih jelas di sekitar 2,5 km pada area dengan banyak hambatan.',
+    'Di atas 3 km, suara mulai muncul noise, tetapi masih dapat terdengar tergantung kondisi lokasi.',
   ],
 };
-
-const baseFeatures = [
-  'Komunikasi cepat tanpa pulsa dan internet.',
-  'Menggunakan frekuensi UHF dengan 16 channel.',
-  'Baterai 2800 mAh untuk kebutuhan penggunaan lapangan.',
-  'Ukuran ringkas dan mudah dibawa.',
-  'Audio cukup jernih untuk koordinasi acara.',
-  'Dilengkapi senter LED untuk kondisi darurat.',
-  'Cocok digunakan di area kampus, event, outdoor, dan kegiatan lapangan.',
-  'Aksesori seperti charger, antena, baterai, dan headset mudah digunakan.',
-];
 
 const productData: Record<string, Product> = {
   'ht-reguler': {
@@ -137,31 +115,47 @@ const productData: Record<string, Product> = {
     student: '10.000',
     general: '15.000',
     variant: 'regular',
-    desc: 'HT Reguler adalah handy talkie praktis untuk kebutuhan komunikasi event, kampus, camping, dan koordinasi lapangan. Menggunakan frekuensi UHF dengan 16 channel, baterai 2800 mAh, audio jernih, serta jangkauan hingga 10 km pada area terbuka tanpa hambatan.',
-    quickSpecs: baseQuickSpecs,
+    desc: 'HT Reguler adalah unit handy talkie standar untuk kebutuhan komunikasi tim saat acara, kegiatan lapangan, atau aktivitas outdoor. Cocok digunakan ketika tim membutuhkan komunikasi cepat tanpa bergantung pada jaringan internet.',
+    quickSpecs: [
+      { label: 'Frekuensi', value: 'UHF', icon: RadioIcon },
+      { label: 'Channel', value: '16 channel', icon: UsersIcon },
+      { label: 'Baterai', value: '2800 mAh', icon: BatteryIcon },
+      { label: 'Daya output', value: '±5W', icon: ZapIcon },
+      { label: 'Jangkauan', value: 'hingga 10 km di area terbuka tanpa hambatan', icon: SignalIcon },
+    ],
     specContent: {
-      title: 'Spesifikasi HT Reguler',
-      intro:
-        'HT Reguler adalah handy talkie praktis untuk komunikasi jarak dekat hingga menengah. Unit ini cocok digunakan untuk event kampus, kegiatan organisasi, camping, keamanan acara, kepanitiaan lapangan, dan kebutuhan koordinasi tim tanpa bergantung pada pulsa atau internet.',
+      title: 'HT Reguler',
+      intro: 'Ringkasan spesifikasi utama unit HT yang digunakan Kanal Tiga.',
       summaryLabel: 'Ringkasan spesifikasi HT Reguler',
-      highlights: baseHighlights,
+      highlights: [
+        { label: 'Frekuensi', value: 'UHF', icon: RadioIcon },
+        { label: 'Channel', value: '16 channel', icon: UsersIcon },
+        { label: 'Baterai', value: '2800 mAh', icon: BatteryIcon },
+        { label: 'Daya output', value: '±5W', icon: ZapIcon },
+        { label: 'Jangkauan', value: 'hingga 10 km di area terbuka tanpa hambatan', icon: SignalIcon },
+      ],
       technicalSpecs: baseTechnicalSpecs,
-      rangeNote: baseRangeNote,
-      features: baseFeatures,
+      rangeNote: sharedRangeNote,
+      features: [
+        'Komunikasi cepat tanpa internet.',
+        'Ringkas dan mudah dibawa.',
+        'Cocok untuk koordinasi banyak titik.',
+        'Dilengkapi baterai 2800 mAh.',
+        'Memiliki senter LED darurat.',
+        'Aksesori seperti charger, antena, baterai, dan headset mudah digunakan.',
+      ],
       suitableFor: [
-        'PKKMB atau ospek kampus.',
-        'Event mahasiswa dan kepanitiaan besar.',
-        'Camping, hiking, dan kegiatan outdoor.',
-        'Keamanan acara.',
-        'Koordinasi lapangan.',
-        'Organisasi mahasiswa dan komunitas.',
-        'Event organizer kecil.',
-        'Kegiatan logistik dan operasional.',
+        'Kepanitiaan acara',
+        'Camping dan kegiatan outdoor',
+        'Keamanan acara',
+        'Koordinasi lapangan',
+        'Organisasi dan komunitas',
+        'Kegiatan logistik atau operasional',
       ],
       cta: {
-        title: 'Butuh HT Reguler untuk koordinasi acara?',
-        body: 'Kirim detail kebutuhan Anda lewat WhatsApp agar Kanal Tiga bisa bantu cek ketersediaan unit dan opsi pengambilan.',
-        button: 'Booking HT Reguler',
+        title: 'Butuh HT Reguler untuk acara Anda?',
+        body: 'Isi data booking di bagian atas agar Kanal Tiga dapat membantu cek ketersediaan unit dan opsi pengambilan yang sesuai.',
+        button: 'Lengkapi Form Booking',
       },
     },
   },
@@ -170,58 +164,63 @@ const productData: Record<string, Product> = {
     student: '15.000',
     general: '20.000',
     variant: 'earphone',
-    desc: 'HT + Earphone menggunakan unit HT dengan spesifikasi yang sama seperti HT Reguler, namun dilengkapi earphone khusus agar suara lebih jelas dan lebih mudah terdengar saat digunakan di area ramai atau kondisi event yang bising.',
+    desc: 'HT + Earphone menggunakan unit HT yang sama seperti HT Reguler, dengan tambahan earphone khusus agar komunikasi lebih jelas dan nyaman di area ramai.',
     quickSpecs: [
       { label: 'Frekuensi', value: 'UHF', icon: RadioIcon },
       { label: 'Channel', value: '16 channel', icon: UsersIcon },
       { label: 'Baterai', value: '2800 mAh', icon: BatteryIcon },
       { label: 'Aksesori', value: 'Earphone khusus', icon: HeadphonesIcon },
+      { label: 'Jangkauan', value: 'hingga 10 km di area terbuka tanpa hambatan', icon: SignalIcon },
     ],
     specContent: {
-      title: 'Spesifikasi HT + Earphone',
-      intro:
-        'HT + Earphone menggunakan unit HT dengan spesifikasi yang sama seperti HT Reguler, namun dilengkapi earphone khusus agar suara lebih jelas dan lebih mudah terdengar saat digunakan di area ramai atau kondisi event yang bising.',
+      title: 'HT + Earphone',
+      intro: 'Ringkasan spesifikasi unit HT dan aksesori tambahan earphone.',
       summaryLabel: 'Ringkasan spesifikasi HT + Earphone',
       highlights: [
         { label: 'Frekuensi', value: 'UHF', icon: RadioIcon },
-        { label: 'Kapasitas', value: '16 channel', icon: UsersIcon },
+        { label: 'Channel', value: '16 channel', icon: UsersIcon },
         { label: 'Baterai', value: '2800 mAh', icon: BatteryIcon },
-        { label: 'Daya Output', value: '±5W', icon: ZapIcon },
         { label: 'Aksesori', value: 'Earphone khusus', icon: HeadphonesIcon },
+        { label: 'Jangkauan', value: 'hingga 10 km di area terbuka tanpa hambatan', icon: SignalIcon },
       ],
       packageDifference: {
-        title: 'Perbedaan Paket',
+        title: 'Perbedaan paket',
         badge: 'Spesifikasi HT sama, tambahan earphone khusus.',
         content:
-          'Paket HT + Earphone menggunakan unit HT yang sama dengan HT Reguler. Perbedaannya ada pada tambahan earphone khusus yang membantu suara lebih jelas, lebih fokus, dan lebih nyaman digunakan saat koordinasi di area ramai.',
+          'Paket ini memakai spesifikasi HT yang sama dengan HT Reguler. Perbedaannya ada pada tambahan earphone khusus yang membantu suara lebih fokus, mudah terdengar, dan lebih nyaman digunakan saat acara berlangsung di area ramai.',
         highlights: [
           { label: 'Spesifikasi HT sama seperti HT Reguler.', icon: RadioIcon },
-          { label: 'Dilengkapi earphone khusus.', icon: HeadphonesIcon },
-          { label: 'Suara lebih jelas di area ramai.', icon: Volume2Icon },
-          { label: 'Lebih nyaman untuk panitia lapangan.', icon: UsersIcon },
-          { label: 'Cocok untuk keamanan, LO, koordinator divisi, dan stage crew.', icon: ShieldCheckIcon },
+          { label: 'Termasuk tambahan earphone khusus.', icon: HeadphonesIcon },
+          { label: 'Lebih nyaman untuk area ramai.', icon: Volume2Icon },
+          { label: 'Membantu komunikasi lebih fokus.', icon: UsersIcon },
+          { label: 'Cocok untuk panitia lapangan dan koordinator tim.', icon: ShieldCheckIcon },
         ],
       },
-      technicalSpecs: baseTechnicalSpecs,
-      rangeNote: baseRangeNote,
+      technicalSpecs: [
+        ...baseTechnicalSpecs,
+        { label: 'Aksesori tambahan', value: 'Earphone khusus' },
+      ],
+      rangeNote: sharedRangeNote,
       features: [
-        ...baseFeatures,
-        'Tambahan earphone membantu komunikasi lebih fokus di area ramai.',
-        'Lebih nyaman untuk role panitia yang perlu mendengar instruksi cepat.',
+        'Spesifikasi HT sama seperti HT Reguler.',
+        'Earphone membantu suara lebih jelas di area ramai.',
+        'Lebih nyaman untuk komunikasi panitia lapangan.',
+        'Mengurangi kebutuhan mendekatkan HT ke telinga.',
+        'Cocok untuk koordinasi saat acara padat atau bising.',
       ],
       suitableFor: [
-        'Panitia lapangan.',
-        'Keamanan acara.',
-        'LO / liaison officer.',
-        'Koordinator divisi.',
-        'Stage crew.',
-        'Event dengan area ramai.',
-        'Kegiatan yang membutuhkan komunikasi lebih jelas.',
+        'Panitia lapangan',
+        'Keamanan acara',
+        'LO atau liaison officer',
+        'Koordinator divisi',
+        'Stage crew',
+        'Event dengan area ramai',
+        'Tim yang membutuhkan komunikasi lebih fokus',
       ],
       cta: {
-        title: 'Butuh HT + Earphone untuk area event yang ramai?',
-        body: 'Kirim detail kebutuhan Anda lewat WhatsApp agar Kanal Tiga bisa bantu cek ketersediaan paket HT dengan earphone khusus.',
-        button: 'Booking HT + Earphone',
+        title: 'Butuh HT + Earphone untuk acara Anda?',
+        body: 'Isi data booking di bagian atas agar Kanal Tiga dapat membantu cek ketersediaan unit dan opsi pengambilan yang sesuai.',
+        button: 'Lengkapi Form Booking',
       },
     },
   },
@@ -236,7 +235,7 @@ const deliveryOptions: Array<{
 }> = [
   {
     id: 'pickup',
-    label: 'Ambil Sendiri',
+    label: 'Ambil sendiri',
     detail: 'Pickup area Blater / FT UNSOED',
     price: 'Gratis',
     message: 'Ambil sendiri (Gratis)',
@@ -264,16 +263,88 @@ const deliveryOptions: Array<{
   },
 ];
 
+function validateBookingForm(values: BookingFormValues) {
+  const errors: BookingErrors = {};
+
+  if (!values.unitCount.trim() || Number(values.unitCount) < 1) {
+    errors.unitCount = 'Masukkan jumlah unit minimal 1.';
+  }
+
+  if (!values.useDate.trim()) {
+    errors.useDate = 'Pilih tanggal pemakaian.';
+  }
+
+  if (!values.duration.trim()) {
+    errors.duration = 'Masukkan durasi sewa.';
+  }
+
+  if (!values.eventName.trim()) {
+    errors.eventName = 'Masukkan nama acara atau kebutuhan utama.';
+  }
+
+  if (!values.eventLocation.trim()) {
+    errors.eventLocation = 'Masukkan lokasi acara atau catatan lokasi.';
+  }
+
+  return errors;
+}
+
+function buildWhatsAppMessage({
+  productName,
+  customerType,
+  price,
+  deliveryMessage,
+  bookingValues,
+}: {
+  productName: string;
+  customerType: CustomerType;
+  price: string;
+  deliveryMessage: string;
+  bookingValues: BookingFormValues;
+}) {
+  const lines = [
+    'Halo Kanal Tiga, saya ingin booking sewa HT.',
+    '',
+    `Produk: ${productName}`,
+    `Kategori penyewa: ${customerType === 'mahasiswa' ? 'Mahasiswa' : 'Umum'}`,
+    `Harga: Rp${price}/unit/hari`,
+    `Jumlah unit: ${bookingValues.unitCount}`,
+    `Tanggal pemakaian: ${bookingValues.useDate}`,
+    `Durasi sewa: ${bookingValues.duration}`,
+    `Opsi pengambilan/pengiriman: ${deliveryMessage}`,
+    `Nama acara/kebutuhan: ${bookingValues.eventName}`,
+    `Lokasi/catatan: ${bookingValues.eventLocation}`,
+  ];
+
+  if (bookingValues.notes.trim()) {
+    lines.push(`Catatan tambahan: ${bookingValues.notes}`);
+  }
+
+  lines.push('', 'Mohon cek ketersediaan unitnya. Terima kasih.');
+
+  return lines.join('\n');
+}
+
+function openWhatsApp(message: string) {
+  const url = `https://wa.me/6283150964050?text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank', 'noopener,noreferrer');
+}
+
 export default function Detail() {
   const { id } = useParams();
   const product = productData[id || ''];
   const [customerType, setCustomerType] = useState<CustomerType>('mahasiswa');
   const [deliveryOption, setDeliveryOption] = useState<DeliveryOption>('pickup');
-  const [unitCount, setUnitCount] = useState('1');
-  const [useDate, setUseDate] = useState('');
-  const [duration, setDuration] = useState('2 hari');
-  const [eventLocation, setEventLocation] = useState('');
-  const [notes, setNotes] = useState('');
+  const [bookingValues, setBookingValues] = useState<BookingFormValues>({
+    unitCount: '1',
+    useDate: '',
+    duration: '2 hari',
+    eventName: '',
+    eventLocation: '',
+    notes: '',
+  });
+  const [bookingErrors, setBookingErrors] = useState<BookingErrors>({});
+  const [bookingNotice, setBookingNotice] = useState('');
 
   if (!product) {
     return (
@@ -296,19 +367,61 @@ export default function Detail() {
 
   const selectedPrice = customerType === 'mahasiswa' ? product.student : product.general;
   const selectedDelivery = deliveryOptions.find((option) => option.id === deliveryOption);
-  const waMessage = [
-    'Halo Kanal Tiga, saya mau sewa HT.',
-    `Produk: ${product.name}`,
-    `Kategori: ${customerType === 'mahasiswa' ? 'Mahasiswa' : 'Umum'}`,
-    `Harga sewa: Rp${selectedPrice}/hari`,
-    `Jumlah unit: ${unitCount || '-'}`,
-    `Tanggal pakai: ${useDate || '-'}`,
-    `Durasi: ${duration || '-'}`,
-    `Opsi ambil/kirim: ${selectedDelivery?.message || '-'}`,
-    `Lokasi event: ${eventLocation || '-'}`,
-    `Catatan: ${notes || '-'}`,
-  ].join('\n');
-  const waLink = `https://wa.me/6283150964050?text=${encodeURIComponent(waMessage)}`;
+  const bookingMessage = buildWhatsAppMessage({
+    productName: product.name,
+    customerType,
+    price: selectedPrice,
+    deliveryMessage: selectedDelivery?.message || '-',
+    bookingValues,
+  });
+
+  function handleBookingValueChange(field: keyof BookingFormValues, value: string) {
+    setBookingValues((current) => ({
+      ...current,
+      [field]: value,
+    }));
+
+    if (field !== 'notes') {
+      setBookingErrors((current) => {
+        if (!current[field]) {
+          return current;
+        }
+
+        const next = { ...current };
+        delete next[field];
+        return next;
+      });
+    }
+
+    if (bookingNotice) {
+      setBookingNotice('');
+    }
+  }
+
+  function scrollToBookingForm() {
+    const target = document.getElementById('booking-form');
+    target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function handleBookingSubmit() {
+    const nextErrors = validateBookingForm(bookingValues);
+    setBookingErrors(nextErrors);
+
+    if (Object.keys(nextErrors).length > 0) {
+      setBookingNotice('Lengkapi data booking terlebih dahulu sebelum membuka WhatsApp.');
+
+      const firstInvalidField = Object.keys(nextErrors)[0] as BookingField | undefined;
+      if (firstInvalidField) {
+        const fieldElement = document.getElementById(firstInvalidField);
+        fieldElement?.focus();
+      }
+
+      return;
+    }
+
+    setBookingNotice('');
+    openWhatsApp(bookingMessage);
+  }
 
   return (
     <main className="detail-shell">
@@ -320,13 +433,13 @@ export default function Detail() {
 
         <div className="product-detail">
           <div className="product-media">
-            <ProductVisual variant={product.variant} />
+            <ProductVisual key={product.variant} variant={product.variant} showGallery />
           </div>
 
           <section className="product-info kt-card detail-panel">
             <div className="section-kicker">
               {product.variant === 'earphone' ? <HeadphonesIcon /> : <RadioIcon />}
-              Detail paket sewa
+              Detail paket
             </div>
             <h1 className="detail-title">{product.name}</h1>
             <p className="detail-subtitle">{product.desc}</p>
@@ -357,8 +470,7 @@ export default function Detail() {
               {customerType === 'mahasiswa' && (
                 <p className="helper-note">
                   <CheckCircleIcon />
-                  Kirim foto KTM melalui WhatsApp dan tunjukkan KTM fisik saat
-                  mengambil unit.
+                  Harga mahasiswa berlaku dengan KTM aktif dan ditunjukkan saat pengambilan unit.
                 </p>
               )}
             </div>
@@ -386,11 +498,14 @@ export default function Detail() {
               </div>
             </div>
 
-            <div className="form-section">
+            <div className="form-section" id="booking-form">
               <h2 className="form-section__title">
                 <CalendarIcon />
                 3. Lengkapi kebutuhan sewa
               </h2>
+              <p className="form-section__copy">
+                Isi data berikut agar pesan WhatsApp terkirim dengan detail yang jelas.
+              </p>
               <div className="booking-grid">
                 <div className="field">
                   <label htmlFor="unitCount">Jumlah unit</label>
@@ -398,46 +513,100 @@ export default function Detail() {
                     id="unitCount"
                     type="number"
                     min="1"
-                    value={unitCount}
-                    onChange={(event) => setUnitCount(event.target.value)}
+                    value={bookingValues.unitCount}
+                    onChange={(event) => handleBookingValueChange('unitCount', event.target.value)}
+                    className={bookingErrors.unitCount ? 'is-error' : ''}
+                    aria-invalid={Boolean(bookingErrors.unitCount)}
+                    aria-describedby={bookingErrors.unitCount ? 'unitCount-error' : undefined}
                   />
+                  {bookingErrors.unitCount && (
+                    <span id="unitCount-error" className="field-error">
+                      {bookingErrors.unitCount}
+                    </span>
+                  )}
                 </div>
                 <div className="field">
                   <label htmlFor="useDate">Tanggal pemakaian</label>
                   <input
                     id="useDate"
                     type="date"
-                    value={useDate}
-                    onChange={(event) => setUseDate(event.target.value)}
+                    value={bookingValues.useDate}
+                    onChange={(event) => handleBookingValueChange('useDate', event.target.value)}
+                    className={bookingErrors.useDate ? 'is-error' : ''}
+                    aria-invalid={Boolean(bookingErrors.useDate)}
+                    aria-describedby={bookingErrors.useDate ? 'useDate-error' : undefined}
                   />
+                  {bookingErrors.useDate && (
+                    <span id="useDate-error" className="field-error">
+                      {bookingErrors.useDate}
+                    </span>
+                  )}
                 </div>
                 <div className="field">
                   <label htmlFor="duration">Durasi sewa</label>
                   <input
                     id="duration"
                     type="text"
-                    value={duration}
-                    onChange={(event) => setDuration(event.target.value)}
+                    value={bookingValues.duration}
+                    onChange={(event) => handleBookingValueChange('duration', event.target.value)}
                     placeholder="Contoh: 2 hari"
+                    className={bookingErrors.duration ? 'is-error' : ''}
+                    aria-invalid={Boolean(bookingErrors.duration)}
+                    aria-describedby={bookingErrors.duration ? 'duration-error' : undefined}
                   />
+                  {bookingErrors.duration && (
+                    <span id="duration-error" className="field-error">
+                      {bookingErrors.duration}
+                    </span>
+                  )}
                 </div>
                 <div className="field">
-                  <label htmlFor="eventLocation">Lokasi event</label>
+                  <label htmlFor="eventName">Nama acara / kebutuhan</label>
+                  <input
+                    id="eventName"
+                    type="text"
+                    value={bookingValues.eventName}
+                    onChange={(event) => handleBookingValueChange('eventName', event.target.value)}
+                    placeholder="Contoh: briefing panitia acara kampus"
+                    className={bookingErrors.eventName ? 'is-error' : ''}
+                    aria-invalid={Boolean(bookingErrors.eventName)}
+                    aria-describedby={bookingErrors.eventName ? 'eventName-error' : undefined}
+                  />
+                  {bookingErrors.eventName && (
+                    <span id="eventName-error" className="field-error">
+                      {bookingErrors.eventName}
+                    </span>
+                  )}
+                </div>
+                <div className="field field--wide">
+                  <label htmlFor="eventLocation">Lokasi acara / catatan lokasi</label>
                   <input
                     id="eventLocation"
                     type="text"
-                    value={eventLocation}
-                    onChange={(event) => setEventLocation(event.target.value)}
-                    placeholder="Contoh: FT UNSOED"
+                    value={bookingValues.eventLocation}
+                    onChange={(event) =>
+                      handleBookingValueChange('eventLocation', event.target.value)
+                    }
+                    placeholder="Contoh: FT UNSOED, Kalimanah"
+                    className={bookingErrors.eventLocation ? 'is-error' : ''}
+                    aria-invalid={Boolean(bookingErrors.eventLocation)}
+                    aria-describedby={
+                      bookingErrors.eventLocation ? 'eventLocation-error' : undefined
+                    }
                   />
+                  {bookingErrors.eventLocation && (
+                    <span id="eventLocation-error" className="field-error">
+                      {bookingErrors.eventLocation}
+                    </span>
+                  )}
                 </div>
                 <div className="field field--wide">
-                  <label htmlFor="notes">Catatan kebutuhan / nama event</label>
+                  <label htmlFor="notes">Catatan tambahan</label>
                   <textarea
                     id="notes"
-                    value={notes}
-                    onChange={(event) => setNotes(event.target.value)}
-                    placeholder="Contoh: untuk PKKMB, butuh koordinasi panitia lapangan"
+                    value={bookingValues.notes}
+                    onChange={(event) => handleBookingValueChange('notes', event.target.value)}
+                    placeholder="Opsional, misalnya kebutuhan koordinasi khusus atau catatan tambahan"
                   />
                 </div>
               </div>
@@ -446,7 +615,7 @@ export default function Detail() {
             <div className="form-section">
               <h2 className="form-section__title">
                 <RadioIcon />
-                4. Spesifikasi unit
+                4. Ringkasan spesifikasi
               </h2>
               <div className="spec-grid">
                 {product.quickSpecs.map((spec) => {
@@ -465,16 +634,21 @@ export default function Detail() {
             </div>
 
             <div className="cta-dock">
-              <a href={waLink} target="_blank" rel="noopener noreferrer" className="btn btn-green">
+              <p className="booking-cta-note">WhatsApp akan terbuka setelah data wajib terisi.</p>
+              {bookingNotice && <p className="form-error-summary">{bookingNotice}</p>}
+              <button type="button" onClick={handleBookingSubmit} className="btn btn-green">
                 <MessageCircleIcon />
                 Booking via WhatsApp
-              </a>
+              </button>
             </div>
           </section>
         </div>
 
         {product.specContent && (
-          <ProductSpecification content={product.specContent} waLink={waLink} />
+          <ProductSpecification
+            content={product.specContent}
+            onReturnToBooking={scrollToBookingForm}
+          />
         )}
       </div>
     </main>
@@ -483,10 +657,10 @@ export default function Detail() {
 
 function ProductSpecification({
   content,
-  waLink,
+  onReturnToBooking,
 }: {
   content: ProductSpecContent;
-  waLink: string;
+  onReturnToBooking: () => void;
 }) {
   return (
     <section className="product-spec-section" aria-labelledby="product-spec-title">
@@ -494,7 +668,7 @@ function ProductSpecification({
         <div>
           <div className="section-kicker">
             <FileTextIcon />
-            Spesifikasi produk
+            Spesifikasi
           </div>
           <h2 id="product-spec-title">{content.title}</h2>
           <p>{content.intro}</p>
@@ -544,7 +718,7 @@ function ProductSpecification({
         <section className="kt-card spec-detail-card">
           <div className="spec-section-heading">
             <RadioIcon />
-            <h3>Detail Teknis</h3>
+            <h3>Detail spesifikasi</h3>
           </div>
           <dl className="technical-spec-grid">
             {content.technicalSpecs.map((spec) => (
@@ -577,7 +751,7 @@ function ProductSpecification({
         <section className="kt-card spec-detail-card">
           <div className="spec-section-heading">
             <ZapIcon />
-            <h3>Fitur Utama</h3>
+            <h3>Fitur utama</h3>
           </div>
           <FeatureList items={content.features} />
         </section>
@@ -585,7 +759,7 @@ function ProductSpecification({
         <section className="kt-card spec-detail-card">
           <div className="spec-section-heading">
             <MapPinIcon />
-            <h3>Cocok Digunakan Untuk</h3>
+            <h3>Cocok untuk</h3>
           </div>
           <FeatureList items={content.suitableFor} />
         </section>
@@ -596,10 +770,10 @@ function ProductSpecification({
           <h3>{content.cta.title}</h3>
           <p>{content.cta.body}</p>
         </div>
-        <a href={waLink} target="_blank" rel="noopener noreferrer" className="btn btn-green">
-          <MessageCircleIcon />
+        <button type="button" onClick={onReturnToBooking} className="btn btn-secondary">
+          <ArrowLeftIcon />
           {content.cta.button}
-        </a>
+        </button>
       </div>
     </section>
   );
