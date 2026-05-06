@@ -113,6 +113,14 @@ export function SignalIcon(props: IconProps) {
   );
 }
 
+export function ZapIcon(props: IconProps) {
+  return (
+    <IconBase {...props}>
+      <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" />
+    </IconBase>
+  );
+}
+
 export function TruckIcon(props: IconProps) {
   return (
     <IconBase {...props}>
@@ -195,6 +203,25 @@ export function MoonIcon(props: IconProps) {
   return (
     <IconBase {...props}>
       <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" />
+    </IconBase>
+  );
+}
+
+export function MenuIcon(props: IconProps) {
+  return (
+    <IconBase {...props}>
+      <path d="M4 7h16" />
+      <path d="M4 12h16" />
+      <path d="M4 17h16" />
+    </IconBase>
+  );
+}
+
+export function CloseIcon(props: IconProps) {
+  return (
+    <IconBase {...props}>
+      <path d="M6 6 18 18" />
+      <path d="M18 6 6 18" />
     </IconBase>
   );
 }

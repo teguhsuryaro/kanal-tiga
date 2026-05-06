@@ -1,62 +1,100 @@
-import { ClockIcon, MapPinIcon, MessageCircleIcon, RadioIcon, UsersIcon } from './Icons';
+import { Link } from 'react-router-dom';
+import {
+  ClockIcon,
+  HeadphonesIcon,
+  MapPinIcon,
+  MessageCircleIcon,
+  RadioIcon,
+  TruckIcon,
+} from './Icons';
 
 export default function Footer() {
   return (
-    <footer className="footer">
+    <footer id="contact" className="footer">
       <div className="kt-container">
         <div className="footer-grid">
-          <div>
+          <div className="footer-column footer-column--brand">
             <h3>Kanal Tiga</h3>
             <p>
-              Rental HT dekat FT UNSOED Purbalingga untuk event kampus, PKKMB,
-              camping, dan koordinasi lapangan.
+              Rental HT untuk event, camping, kegiatan komunitas, dan kebutuhan
+              koordinasi lapangan di Purbalingga dan sekitarnya.
             </p>
           </div>
 
-          <div>
-            <h4>Area Layanan</h4>
-            <div className="footer-list">
-              <div className="footer-item">
-                <MapPinIcon />
-                <p>Blater, Kalimanah, sekitar FT UNSOED Purbalingga.</p>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <h4>Operasional</h4>
-            <div className="footer-list">
-              <div className="footer-item">
-                <ClockIcon />
-                <p>Setiap hari, 07.00-22.00 WIB.</p>
-              </div>
-              <div className="footer-item">
+          <div className="footer-column">
+            <h4>Layanan</h4>
+            <div className="footer-link-list">
+              <Link to="/detail/ht-reguler" className="footer-link-item">
                 <RadioIcon />
-                <p>Unit dicek sebelum digunakan.</p>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <h4>Kontak</h4>
-            <div className="footer-list">
-              <div className="footer-item">
+                <span>Sewa HT Reguler</span>
+              </Link>
+              <Link to="/detail/ht-earphone" className="footer-link-item">
+                <HeadphonesIcon />
+                <span>Sewa HT + Earphone</span>
+              </Link>
+              <a
+                href="https://wa.me/6283150964050"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-link-item"
+              >
                 <MessageCircleIcon />
-                <a href="https://wa.me/6283150964050" target="_blank" rel="noopener noreferrer">
-                  WhatsApp Kanal Tiga
-                </a>
+                <span>Booking via WhatsApp</span>
+              </a>
+              <div className="footer-link-item">
+                <TruckIcon />
+                <span>Pickup atau pengantaran sesuai lokasi</span>
               </div>
-              <div className="footer-item">
-                <UsersIcon />
-                <p>@kanaltiga.ht</p>
+            </div>
+          </div>
+
+          <div className="footer-column">
+            <h4>Area Layanan</h4>
+            <div className="footer-link-list">
+              <div className="footer-link-item">
+                <MapPinIcon />
+                <span>Blater</span>
+              </div>
+              <div className="footer-link-item">
+                <MapPinIcon />
+                <span>Kalimanah</span>
+              </div>
+              <div className="footer-link-item">
+                <MapPinIcon />
+                <span>FT UNSOED Purbalingga</span>
+              </div>
+              <div className="footer-link-item">
+                <MapPinIcon />
+                <span>Purbalingga dan sekitarnya</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="footer-column">
+            <h4>Kontak</h4>
+            <div className="footer-link-list">
+              <a
+                href="https://wa.me/6283150964050"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-link-item"
+              >
+                <MessageCircleIcon />
+                <span>WhatsApp Kanal Tiga</span>
+              </a>
+              <div className="footer-link-item">
+                <RadioIcon />
+                <span>@kanaltiga.ht</span>
+              </div>
+              <div className="footer-link-item">
+                <ClockIcon />
+                <span>Setiap hari, 07.00-22.00 WIB</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="footer-bottom">
-          &copy; {new Date().getFullYear()} Kanal Tiga HT Rental. All rights reserved.
-        </div>
+        <div className="footer-bottom">&copy; 2026 Kanal Tiga. All rights reserved.</div>
       </div>
     </footer>
   );

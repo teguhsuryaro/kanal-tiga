@@ -21,8 +21,8 @@ const products = [
     name: 'HT Reguler',
     generalPrice: '15.000',
     studentPrice: '10.000',
-    desc: 'Unit HT siap pakai untuk panitia event, PKKMB, camping, dan koordinasi lapangan.',
-    badge: 'Favorit Mahasiswa',
+    desc: 'Unit HT siap pakai untuk komunikasi event, camping, kepanitiaan, dan koordinasi lapangan.',
+    badge: 'Paket Dasar',
     variant: 'regular' as const,
   },
   {
@@ -30,16 +30,16 @@ const products = [
     name: 'HT + Earphone',
     generalPrice: '20.000',
     studentPrice: '15.000',
-    desc: 'Paket handsfree untuk komunikasi yang lebih rapi, fokus, dan nyaman di area ramai.',
-    badge: 'Untuk Panitia Lapangan',
+    desc: 'Paket HT dengan tambahan earphone khusus agar suara lebih jelas dan nyaman digunakan di area ramai.',
+    badge: 'Dengan Earphone',
     variant: 'earphone' as const,
   },
 ];
 
 const benefits = [
   {
-    title: 'Dekat FT UNSOED',
-    desc: 'Pickup mudah dari area Blater, Kalimanah, dekat Fakultas Teknik UNSOED Purbalingga.',
+    title: 'Pickup mudah',
+    desc: 'Pickup tersedia di sekitar Blater, Kalimanah, dekat FT UNSOED Purbalingga.',
     icon: MapPinIcon,
   },
   {
@@ -48,13 +48,13 @@ const benefits = [
     icon: MessageCircleIcon,
   },
   {
-    title: 'Unit Dicek Rutin',
-    desc: 'HT disiapkan dan dicek sebelum digunakan agar koordinasi tim tetap lancar.',
+    title: 'Unit dicek sebelum digunakan',
+    desc: 'Setiap unit disiapkan dan dicek agar siap dipakai saat acara berlangsung.',
     icon: ShieldCheckIcon,
   },
   {
-    title: 'Harga Mahasiswa',
-    desc: 'Tarif khusus untuk mahasiswa FT UNSOED dengan KTM sesuai ketentuan.',
+    title: 'Harga khusus mahasiswa',
+    desc: 'Promo tersedia untuk mahasiswa dengan menunjukkan KTM sesuai ketentuan.',
     icon: TagIcon,
   },
 ];
@@ -62,15 +62,15 @@ const benefits = [
 const terms = [
   {
     q: 'Minimal sewa 2 hari',
-    a: 'Durasi penyewaan dihitung minimal dua hari agar jadwal dan unit bisa disiapkan dengan jelas.',
+    a: 'Durasi penyewaan dihitung minimal dua hari agar jadwal dan unit dapat disiapkan dengan baik.',
   },
   {
     q: 'DP minimal 50%',
-    a: 'Pembayaran uang muka diperlukan untuk mengamankan jadwal sewa dan jumlah unit.',
+    a: 'Uang muka diperlukan untuk mengamankan jadwal sewa dan jumlah unit.',
   },
   {
     q: 'Jaminan identitas',
-    a: 'Mahasiswa mengirim foto KTM dan menunjukkan KTM fisik saat ambil unit. Umum dapat memakai KTP atau SIM.',
+    a: 'Mahasiswa menggunakan KTM. Penyewa umum dapat menggunakan KTP atau SIM sesuai ketentuan.',
   },
   {
     q: 'Tanggung jawab unit',
@@ -80,21 +80,22 @@ const terms = [
 
 export default function Home() {
   return (
-    <main>
+    <main id="home">
       <section className="hero-section">
         <div className="kt-container hero-grid">
           <div className="hero-content">
             <div className="section-kicker">
               <RadioIcon />
-              Rental HT dekat FT UNSOED Purbalingga
+              Rental HT di Purbalingga
             </div>
             <h1 className="hero-title">
-              Komunikasi Lancar, <span>Event Sukses.</span>
+              Komunikasi tim lebih rapi, <span>acara lebih terkendali.</span>
             </h1>
             <p className="hero-subtitle">
-              Kanal Tiga menyediakan sewa HT yang reliabel untuk event kampus,
-              kepanitiaan, PKKMB, camping, dan kebutuhan koordinasi lapangan di
-              sekitar Blater, Kalimanah.
+              Kanal Tiga menyediakan sewa HT untuk event, camping,
+              kepanitiaan, komunitas, keamanan, dan kebutuhan koordinasi
+              lapangan. Pickup tersedia di sekitar Blater, Kalimanah, dekat FT
+              UNSOED Purbalingga.
             </p>
             <div className="hero-actions">
               <a href="#products" className="btn btn-primary">
@@ -113,11 +114,11 @@ export default function Home() {
               </div>
               <div className="hero-stat">
                 <strong>2 Paket</strong>
-                <span>HT reguler dan earphone</span>
+                <span>Reguler dan earphone</span>
               </div>
               <div className="hero-stat">
-                <strong>FT UNSOED</strong>
-                <span>Area pickup terdekat</span>
+                <strong>Blater</strong>
+                <span>Area pickup utama</span>
               </div>
             </div>
           </div>
@@ -132,12 +133,12 @@ export default function Home() {
         <div className="kt-container">
           <div className="section-kicker">
             <CalendarIcon />
-            Paket sewa harian
+            Paket sewa HT
           </div>
-          <h2 className="section-heading">Pilih HT sesuai cara kerja tim Anda.</h2>
+          <h2 className="section-heading">Pilih paket sesuai kebutuhan komunikasi tim.</h2>
           <p className="section-copy">
-            Dua pilihan paket sederhana dengan harga transparan untuk mahasiswa
-            dan pengguna umum.
+            Pilih paket sesuai kebutuhan komunikasi tim, mulai dari penggunaan
+            umum sampai area event yang lebih ramai.
           </p>
 
           <div className="promo-banner">
@@ -145,10 +146,10 @@ export default function Home() {
               <BadgePercentIcon />
             </span>
             <div>
-              <h3>Promo Mahasiswa FT UNSOED</h3>
+              <h3>Promo Mahasiswa</h3>
               <p>
                 Tunjukkan KTM dan dapatkan harga khusus mulai dari
-                Rp10.000/unit/hari.
+                <strong> Rp10.000/unit/hari</strong>.
               </p>
             </div>
           </div>
@@ -194,16 +195,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="kt-section">
+      <section id="benefits" className="kt-section">
         <div className="kt-container">
           <div className="section-kicker">
             <ShieldCheckIcon />
-            Kenapa Kanal Tiga
+            Kenapa memilih Kanal Tiga?
           </div>
-          <h2 className="section-heading">Dibuat untuk koordinasi lapangan yang rapi.</h2>
+          <h2 className="section-heading">Koordinasi lebih cepat tanpa bergantung pada internet.</h2>
           <p className="section-copy">
-            Cocok untuk kepanitiaan kampus, event organizer, camping group, dan
-            tim kecil yang butuh komunikasi cepat tanpa ribet.
+            Kami membantu tim berkomunikasi lebih cepat dan rapi tanpa
+            bergantung pada pulsa, internet, atau koordinasi manual yang mudah
+            terlewat.
           </p>
 
           <div className="benefit-grid mt-10">
@@ -227,12 +229,12 @@ export default function Home() {
         <div className="kt-container">
           <div className="section-kicker">
             <FileTextIcon />
-            Syarat & Ketentuan
+            Syarat sewa
           </div>
-          <h2 className="section-heading">Syarat sewa dibuat jelas sejak awal.</h2>
+          <h2 className="section-heading">Syarat sewa jelas sejak awal.</h2>
           <p className="section-copy">
-            Ringkas, mudah dipahami, dan membantu kedua pihak menjaga unit tetap
-            aman selama masa sewa.
+            Ketentuan dibuat sederhana agar proses sewa lebih aman, transparan,
+            dan mudah dipahami oleh penyewa.
           </p>
 
           <div className="terms-grid">
@@ -257,7 +259,7 @@ export default function Home() {
               className="btn btn-secondary"
             >
               <ExternalLinkIcon />
-              Baca Syarat & Ketentuan Lengkap
+              Baca Syarat Sewa Lengkap
             </a>
           </div>
         </div>
@@ -265,15 +267,15 @@ export default function Home() {
 
       <section className="kt-section">
         <div className="kt-container">
-          <div className="kt-card term-card">
+          <div className="kt-card delivery-note-card">
             <span className="icon-chip">
               <TruckIcon />
             </span>
             <div>
-              <h3>Pickup di Blater atau kirim sesuai jarak</h3>
+              <h3>Pickup di Blater atau pengantaran sesuai jarak</h3>
               <p>
-                Ambil unit di sekitar Blater/FT UNSOED tanpa biaya. Pengantaran
-                tersedia dengan ongkir menyesuaikan jarak dan lokasi event.
+                Ambil unit di sekitar Blater tanpa biaya. Pengantaran tersedia
+                dengan biaya menyesuaikan jarak dan lokasi acara.
               </p>
             </div>
           </div>
