@@ -770,6 +770,7 @@ a {
     min-height: 320px;
     place-items: center;
     overflow: hidden;
+    padding: 36px;
     border-radius: var(--radius-xl);
     border: 1px solid var(--kt-border);
     background: var(--kt-product-visual-bg);
@@ -777,6 +778,7 @@ a {
 
   .product-visual--compact {
     min-height: 280px;
+    padding: 24px;
   }
 
   .product-visual-shell {
@@ -813,6 +815,7 @@ a {
     height: 100%;
     object-fit: contain;
     object-position: center;
+    mix-blend-mode: multiply;
   }
 
   .product-photo--earphone {
@@ -857,6 +860,7 @@ a {
     object-fit: contain;
     object-position: center;
     padding: 10px;
+    mix-blend-mode: multiply;
   }
 
   .product-signal {
@@ -1826,8 +1830,9 @@ a {
   }
 
   .product-photo-frame {
-    width: min(100% - 40px, 264px);
-    height: min(100% - 40px, 264px);
+    width: 264px;
+    max-width: calc(100% - 40px);
+    aspect-ratio: 1 / 1;
     padding: 16px;
   }
 
