@@ -75,6 +75,11 @@ function validateBookingForm(values: BookingFormValues) {
 
   if (!values.duration.trim()) {
     errors.duration = 'Masukkan durasi sewa.';
+  } else {
+    const durNum = parseInt(values.duration, 10);
+    if (!isNaN(durNum) && durNum < 2) {
+      errors.duration = 'Minimal sewa 2 hari.';
+    }
   }
 
   if (!values.eventName.trim()) {
