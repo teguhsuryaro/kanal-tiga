@@ -84,7 +84,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className={`mobile-menu ${menuOpen ? 'is-open' : ''}`}>
+      <div className={`mobile-menu ${menuOpen ? 'is-open' : ''}`} aria-hidden={!menuOpen}>
         <div className="kt-container">
           <div className="mobile-menu-panel">
             {navItems.map((item) => (

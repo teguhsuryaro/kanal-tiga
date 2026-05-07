@@ -4,6 +4,7 @@ import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import Detail from './pages/Detail'
+import NotFound from './pages/NotFound'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/detail/:id" element={<Detail />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
         <Footer />
@@ -24,3 +26,4 @@ function App() {
 }
 
 export default App
+

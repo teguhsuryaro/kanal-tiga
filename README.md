@@ -1,73 +1,86 @@
-# React + TypeScript + Vite
+# Kanal Tiga
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Rental Handy Talkie (HT) di Purbalingga dan sekitarnya.**
 
-Currently, two official plugins are available:
+Website katalog dan booking sewa HT untuk event, camping, kepanitiaan, komunitas, keamanan, dan koordinasi lapangan. Booking dilakukan melalui integrasi WhatsApp otomatis.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Fitur
 
-## React Compiler
+- **Katalog Produk** — Dua paket sewa: HT Reguler dan HT + Earphone
+- **Halaman Detail** — Spesifikasi lengkap, galeri foto, dan perbandingan paket
+- **Form Booking** — Isi data kebutuhan sewa, lalu kirim pesan otomatis via WhatsApp
+- **Harga Mahasiswa** — Diskon khusus dengan KTM aktif
+- **Opsi Pengiriman** — Pickup gratis di Blater atau pengantaran sesuai jarak
+- **Dark / Light Mode** — Toggle tema dengan penyimpanan preferensi di localStorage
+- **Responsive** — Optimal di desktop, tablet, dan mobile
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- **Framework**: React 19 + TypeScript
+- **Bundler**: Vite 8
+- **Styling**: CSS Variables + Tailwind CSS 3
+- **Routing**: React Router DOM 7
+- **Deployment**: Vercel
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Cara Menjalankan
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+```bash
+# 1. Install dependencies
+npm install
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+# 2. Jalankan dev server
+npm run dev
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# 3. Buka di browser
+# http://localhost:5173
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Script Tersedia
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Command | Fungsi |
+|---|---|
+| `npm run dev` | Jalankan dev server |
+| `npm run build` | Build untuk production |
+| `npm run preview` | Preview hasil build |
+| `npm run lint` | Cek linting (ESLint) |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Struktur Projek
+
 ```
+src/
+├── assets/          # Gambar dan asset statis
+│   └── images/      # Foto produk HT
+├── components/      # Komponen reusable
+│   ├── Footer.tsx
+│   ├── Icons.tsx     # Semua icon SVG custom
+│   ├── Navbar.tsx
+│   ├── ProductVisual.tsx
+│   └── ScrollToTop.tsx
+├── data/            # Data terpusat
+│   ├── products.ts  # Data produk (single source of truth)
+│   └── productImages.ts
+├── pages/           # Halaman utama
+│   ├── Home.tsx
+│   ├── Detail.tsx
+│   └── NotFound.tsx
+├── App.tsx           # Router dan layout
+├── main.tsx          # Entry point
+└── index.css         # Semua styling
+```
+
+## Tim
+
+Projek bisnis tim yang beranggotakan 3 orang.
+
+## Deployment
+
+Projek sudah dikonfigurasi untuk deploy ke Vercel. Push ke branch utama akan otomatis deploy.
+
+```bash
+# Build production
+npm run build
+```
+
+## Lisensi
+
+© 2026 Kanal Tiga. All rights reserved.

@@ -14,27 +14,7 @@ import {
   TruckIcon,
 } from '../components/Icons';
 import ProductVisual from '../components/ProductVisual';
-
-const products = [
-  {
-    id: 'ht-reguler',
-    name: 'HT Reguler',
-    generalPrice: '15.000',
-    studentPrice: '10.000',
-    desc: 'Unit HT siap pakai untuk komunikasi event, camping, kepanitiaan, dan koordinasi lapangan.',
-    badge: 'Paket Dasar',
-    variant: 'regular' as const,
-  },
-  {
-    id: 'ht-earphone',
-    name: 'HT + Earphone',
-    generalPrice: '20.000',
-    studentPrice: '15.000',
-    desc: 'Paket HT dengan tambahan earphone khusus agar suara lebih jelas dan nyaman digunakan di area ramai.',
-    badge: 'Dengan Earphone',
-    variant: 'earphone' as const,
-  },
-];
+import { products } from '../data/products';
 
 const benefits = [
   {

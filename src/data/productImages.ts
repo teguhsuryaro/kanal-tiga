@@ -2,7 +2,7 @@ import backImage from '../assets/images/back.jpg';
 import batteryImage from '../assets/images/baterai.jpg';
 import frontImage from '../assets/images/front.jpeg';
 import fullsetImage from '../assets/images/fullset.webp';
-import regularAngleImage from '../assets/images/kanaltiga (1).jpeg';
+import regularAngleImage from '../assets/images/kanaltiga-1.jpeg';
 
 export type ProductVariant = 'regular' | 'earphone';
 
