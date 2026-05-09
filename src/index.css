@@ -770,6 +770,7 @@ a {
     min-height: 320px;
     place-items: center;
     overflow: hidden;
+    padding: 36px;
     border-radius: var(--radius-xl);
     border: 1px solid var(--kt-border);
     background: var(--kt-product-visual-bg);
@@ -777,6 +778,7 @@ a {
 
   .product-visual--compact {
     min-height: 280px;
+    padding: 24px;
   }
 
   .product-visual-shell {
@@ -788,11 +790,13 @@ a {
     position: relative;
     z-index: 1;
     display: grid;
-    width: min(100% - 72px, 332px);
-    height: min(100% - 72px, 332px);
+    width: 332px;
+    max-width: calc(100% - 72px);
+    aspect-ratio: 1 / 1;
     place-items: center;
     margin: auto;
     padding: 22px;
+    overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: calc(var(--radius-xl) - 2px);
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(241, 245, 249, 0.94));
@@ -800,8 +804,8 @@ a {
   }
 
   .product-visual--compact .product-photo-frame {
-    width: min(100% - 64px, 220px);
-    height: min(100% - 64px, 220px);
+    width: 220px;
+    max-width: calc(100% - 64px);
     padding: 18px;
   }
 
@@ -811,6 +815,7 @@ a {
     height: 100%;
     object-fit: contain;
     object-position: center;
+    mix-blend-mode: multiply;
   }
 
   .product-photo--earphone {
@@ -855,6 +860,7 @@ a {
     object-fit: contain;
     object-position: center;
     padding: 10px;
+    mix-blend-mode: multiply;
   }
 
   .product-signal {
@@ -1824,8 +1830,9 @@ a {
   }
 
   .product-photo-frame {
-    width: min(100% - 40px, 264px);
-    height: min(100% - 40px, 264px);
+    width: 264px;
+    max-width: calc(100% - 40px);
+    aspect-ratio: 1 / 1;
     padding: 16px;
   }
 

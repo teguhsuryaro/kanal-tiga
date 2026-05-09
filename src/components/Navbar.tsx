@@ -52,9 +52,9 @@ export default function Navbar() {
 
         <div className="nav-links" aria-label="Navigasi utama">
           {navItems.map((item) => (
-            <a key={item.href} href={item.href} className="nav-link">
+            <Link key={item.href} to={item.href} className="nav-link">
               {item.label}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -68,10 +68,10 @@ export default function Navbar() {
           >
             {isDark ? <SunIcon /> : <MoonIcon />}
           </button>
-          <a href="/#products" className="btn btn-primary navbar-cta">
+          <Link to="/#products" className="btn btn-primary navbar-cta">
             <RadioIcon />
             <span>Sewa Sekarang</span>
-          </a>
+          </Link>
           <button
             type="button"
             className="menu-toggle"
@@ -84,27 +84,27 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className={`mobile-menu ${menuOpen ? 'is-open' : ''}`}>
+      <div className={`mobile-menu ${menuOpen ? 'is-open' : ''}`} aria-hidden={!menuOpen}>
         <div className="kt-container">
           <div className="mobile-menu-panel">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.href}
-                href={item.href}
+                to={item.href}
                 className="mobile-menu-link"
                 onClick={() => setMenuOpen(false)}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
-            <a
-              href="/#products"
+            <Link
+              to="/#products"
               className="btn btn-primary mobile-menu-cta"
               onClick={() => setMenuOpen(false)}
             >
               <RadioIcon />
               <span>Sewa Sekarang</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -83,8 +83,15 @@ export default function Footer() {
                 <span>WhatsApp Kanal Tiga</span>
               </a>
               <div className="footer-link-item">
-                <RadioIcon />
-                <span>@kanaltiga.ht</span>
+                <a
+                  href="https://www.instagram.com/kanaltiga.id/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-link-item"
+                >
+                  <RadioIcon />
+                  <span>@kanaltiga.id</span>
+                </a>
               </div>
               <div className="footer-link-item">
                 <ClockIcon />
